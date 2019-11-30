@@ -189,7 +189,7 @@ if __name__ == "__main__":
         note_group = []
         i = 0; j = 0;
         while(i < len(staff_notes)):
-            if (staff_notes[i].rec.x > staffs[j].x and j < len(staffs)):
+            if (j < len(staffs) and staff_notes[i].rec.x > staffs[j].x):
                 r = staffs[j]
                 j += 1;
                 if len(note_group) > 0:
@@ -240,7 +240,7 @@ if __name__ == "__main__":
             midi.addNote(track,channel,pitch,time,duration,volume)
             time += duration
 
-    midi.addNote(track,channel,pitch,time,4,0)
+    # midi.addNote(track,channel,pitch,time,4,0)
     # And write it to disk.
     binfile = open("output.mid", 'wb')
     midi.writeFile(binfile)
